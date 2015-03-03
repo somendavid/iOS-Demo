@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		63A19A4A1AA4E4A500323FDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A491AA4E4A500323FDB /* AppDelegate.swift */; };
 		63A19A4D1AA4E4A500323FDB /* iOS_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A4B1AA4E4A500323FDB /* iOS_Demo.xcdatamodeld */; };
-		63A19A4F1AA4E4A500323FDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A4E1AA4E4A500323FDB /* ViewController.swift */; };
 		63A19A521AA4E4A500323FDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A19A501AA4E4A500323FDB /* Main.storyboard */; };
 		63A19A541AA4E4A500323FDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63A19A531AA4E4A500323FDB /* Images.xcassets */; };
 		63A19A571AA4E4A500323FDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63A19A551AA4E4A500323FDB /* LaunchScreen.xib */; };
 		63A19A631AA4E4A500323FDB /* iOS_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A621AA4E4A500323FDB /* iOS_DemoTests.swift */; };
+		63A19A6D1AA4E6FD00323FDB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A6C1AA4E6FD00323FDB /* User.swift */; };
+		63A19A731AA4E8FB00323FDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A721AA4E8FB00323FDB /* LoginViewController.swift */; };
+		63A19A761AA4EBA400323FDB /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A751AA4EBA400323FDB /* LoginManager.swift */; };
+		63A19A781AA4F28700323FDB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A771AA4F28700323FDB /* RegisterViewController.swift */; };
+		63A19A7A1AA636D700323FDB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A791AA636D700323FDB /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +35,17 @@
 		63A19A481AA4E4A500323FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63A19A491AA4E4A500323FDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63A19A4C1AA4E4A500323FDB /* iOS_Demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOS_Demo.xcdatamodel; sourceTree = "<group>"; };
-		63A19A4E1AA4E4A500323FDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63A19A511AA4E4A500323FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63A19A531AA4E4A500323FDB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		63A19A561AA4E4A500323FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		63A19A5C1AA4E4A500323FDB /* iOS DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A19A611AA4E4A500323FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63A19A621AA4E4A500323FDB /* iOS_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_DemoTests.swift; sourceTree = "<group>"; };
+		63A19A6C1AA4E6FD00323FDB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		63A19A721AA4E8FB00323FDB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		63A19A751AA4EBA400323FDB /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		63A19A771AA4F28700323FDB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		63A19A791AA636D700323FDB /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +87,11 @@
 		63A19A461AA4E4A500323FDB /* iOS Demo */ = {
 			isa = PBXGroup;
 			children = (
-				63A19A491AA4E4A500323FDB /* AppDelegate.swift */,
-				63A19A4E1AA4E4A500323FDB /* ViewController.swift */,
-				63A19A501AA4E4A500323FDB /* Main.storyboard */,
-				63A19A531AA4E4A500323FDB /* Images.xcassets */,
-				63A19A551AA4E4A500323FDB /* LaunchScreen.xib */,
-				63A19A4B1AA4E4A500323FDB /* iOS_Demo.xcdatamodeld */,
+				63A19A741AA4EB8300323FDB /* Source */,
+				63A19A6E1AA4E72F00323FDB /* View */,
+				63A19A711AA4E78900323FDB /* ViewControllers */,
+				63A19A6F1AA4E73D00323FDB /* Model */,
+				63A19A701AA4E76400323FDB /* Resources */,
 				63A19A471AA4E4A500323FDB /* Supporting Files */,
 			);
 			path = "iOS Demo";
@@ -113,6 +120,51 @@
 				63A19A611AA4E4A500323FDB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63A19A6E1AA4E72F00323FDB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63A19A501AA4E4A500323FDB /* Main.storyboard */,
+				63A19A551AA4E4A500323FDB /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		63A19A6F1AA4E73D00323FDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63A19A6C1AA4E6FD00323FDB /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		63A19A701AA4E76400323FDB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63A19A4B1AA4E4A500323FDB /* iOS_Demo.xcdatamodeld */,
+				63A19A531AA4E4A500323FDB /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		63A19A711AA4E78900323FDB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				63A19A721AA4E8FB00323FDB /* LoginViewController.swift */,
+				63A19A771AA4F28700323FDB /* RegisterViewController.swift */,
+				63A19A791AA636D700323FDB /* UserViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		63A19A741AA4EB8300323FDB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				63A19A491AA4E4A500323FDB /* AppDelegate.swift */,
+				63A19A751AA4EBA400323FDB /* LoginManager.swift */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +267,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63A19A4F1AA4E4A500323FDB /* ViewController.swift in Sources */,
+				63A19A7A1AA636D700323FDB /* UserViewController.swift in Sources */,
+				63A19A6D1AA4E6FD00323FDB /* User.swift in Sources */,
 				63A19A4D1AA4E4A500323FDB /* iOS_Demo.xcdatamodeld in Sources */,
+				63A19A731AA4E8FB00323FDB /* LoginViewController.swift in Sources */,
+				63A19A781AA4F28700323FDB /* RegisterViewController.swift in Sources */,
 				63A19A4A1AA4E4A500323FDB /* AppDelegate.swift in Sources */,
+				63A19A761AA4EBA400323FDB /* LoginManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +467,7 @@
 				63A19A681AA4E4A500323FDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63A19A691AA4E4A500323FDB /* Build configuration list for PBXNativeTarget "iOS DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +476,7 @@
 				63A19A6B1AA4E4A500323FDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

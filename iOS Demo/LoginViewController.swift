@@ -14,9 +14,33 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     let loginManager = LoginManager()
+    var loginUser : User?
     
     @IBAction func loginButtonPressed(sender: UIButton) {
         
-        self.loginManager.login(self.usernameTextField.text, password: self.passwordTextField.text)
+        if let user = self.loginManager.login(self.usernameTextField.text, password: self.passwordTextField.text) {
+            self.loginUser = user
+            self.performSegueWithIdentifier("UserViewController", sender: self)
+        }
+        else
+        {
+            showAlert()
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "UserViewController" {
+            let viewController = segue.destinationViewController as UserViewController
+            viewController.user = self.loginUser
+        }
+    }
+    
+    func showAlert() {
+        let alertController = UIAlertController(title: "Login Failed", message: nil, preferredStyle: .Alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true) {}
     }
 }

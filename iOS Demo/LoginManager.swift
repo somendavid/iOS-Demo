@@ -1,17 +1,9 @@
-//
-//  LoginManager.swift
-//  iOS Demo
-//
-//  Created by David Somen on 02/03/2015.
-//  Copyright (c) 2015 David Somen. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
-class LoginManager {
-    
-    let managedObjectContext : NSManagedObjectContext
+class LoginManager
+{
+    let managedObjectContext: NSManagedObjectContext
     
     init()
     {
@@ -19,20 +11,34 @@ class LoginManager {
         self.managedObjectContext = appDelegate.managedObjectContext!
     }
 
-    func login(username:String, password:String) -> User? {
+    func loginUsername(username: String, password: String) -> User?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username, password)
         
-        let fetchRequest = NSFetchRequest(entityName:"User")
-        fetchRequest.predicate = NSPredicate(format:"username == %@ AND password == %@", username, password)
-        
-        if let result = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User] {
+        if let result = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
+        {
             return result.first
         }
         
         return nil;
     }
+
+    func checkUsername(username: String) -> Bool
+    {
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "username == %@", username)
+
+        if let result = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
+        {
+            return !result.isEmpty
+        }
+
+        return false
+    }
     
-    func register(username:String, password:String, firstName:String, lastName:String) {
-        
+    func registerUsername(username: String, password: String, firstName: String, lastName: String)
+    {
         let newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.managedObjectContext) as User
         
         newUser.username = username

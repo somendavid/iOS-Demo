@@ -1,26 +1,20 @@
-//
-//  LoginViewController.swift
-//  iOS Demo
-//
-//  Created by David Somen on 02/03/2015.
-//  Copyright (c) 2015 David Somen. All rights reserved.
-//
-
 import UIKit
 
-class LoginViewController: UIViewController {
-
+class LoginViewController: UIViewController
+{
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     let loginManager = LoginManager()
-    var loginUser : User?
+    let userSegueIdentifier = "UserViewController"
+    var loginUser: User?
     
-    @IBAction func loginButtonPressed(sender: UIButton) {
-        
-        if let user = self.loginManager.login(self.usernameTextField.text, password: self.passwordTextField.text) {
+    @IBAction func loginButtonPressed(sender: UIButton)
+    {
+        if let user = self.loginManager.loginUsername(self.usernameTextField.text, password: self.passwordTextField.text)
+        {
             self.loginUser = user
-            self.performSegueWithIdentifier("UserViewController", sender: self)
+            self.performSegueWithIdentifier(userSegueIdentifier, sender: self)
         }
         else
         {
@@ -28,19 +22,19 @@ class LoginViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "UserViewController" {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == userSegueIdentifier
+        {
             let viewController = segue.destinationViewController as UserViewController
             viewController.user = self.loginUser
         }
     }
-    
-    func showAlert() {
+
+    func showAlert()
+    {
         let alertController = UIAlertController(title: "Login Failed", message: nil, preferredStyle: .Alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
-        alertController.addAction(OKAction)
-        
-        self.presentViewController(alertController, animated: true) {}
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

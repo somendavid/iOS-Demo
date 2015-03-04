@@ -88,9 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				63A19A741AA4EB8300323FDB /* Source */,
-				63A19A6E1AA4E72F00323FDB /* View */,
+				63A19A6E1AA4E72F00323FDB /* Views */,
 				63A19A711AA4E78900323FDB /* ViewControllers */,
-				63A19A6F1AA4E73D00323FDB /* Model */,
+				63A19A6F1AA4E73D00323FDB /* Models */,
 				63A19A701AA4E76400323FDB /* Resources */,
 				63A19A471AA4E4A500323FDB /* Supporting Files */,
 			);
@@ -122,21 +122,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		63A19A6E1AA4E72F00323FDB /* View */ = {
+		63A19A6E1AA4E72F00323FDB /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				63A19A501AA4E4A500323FDB /* Main.storyboard */,
 				63A19A551AA4E4A500323FDB /* LaunchScreen.xib */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
-		63A19A6F1AA4E73D00323FDB /* Model */ = {
+		63A19A6F1AA4E73D00323FDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				63A19A6C1AA4E6FD00323FDB /* User.swift */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		63A19A701AA4E76400323FDB /* Resources */ = {

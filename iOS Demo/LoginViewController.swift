@@ -40,6 +40,7 @@ class LoginViewController: UIViewController
     {
         let alertController = UIAlertController(title: "Login Failed", message: nil, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 

@@ -16,7 +16,7 @@
 		63A19A6D1AA4E6FD00323FDB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A6C1AA4E6FD00323FDB /* User.swift */; };
 		63A19A731AA4E8FB00323FDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A721AA4E8FB00323FDB /* LoginViewController.swift */; };
 		63A19A761AA4EBA400323FDB /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A751AA4EBA400323FDB /* LoginManager.swift */; };
-		63A19A781AA4F28700323FDB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A771AA4F28700323FDB /* RegisterViewController.swift */; };
+		63A19A781AA4F28700323FDB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A771AA4F28700323FDB /* SignUpViewController.swift */; };
 		63A19A7A1AA636D700323FDB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A791AA636D700323FDB /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +44,7 @@
 		63A19A6C1AA4E6FD00323FDB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		63A19A721AA4E8FB00323FDB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63A19A751AA4EBA400323FDB /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		63A19A771AA4F28700323FDB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		63A19A771AA4F28700323FDB /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		63A19A791AA636D700323FDB /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				63A19A721AA4E8FB00323FDB /* LoginViewController.swift */,
-				63A19A771AA4F28700323FDB /* RegisterViewController.swift */,
+				63A19A771AA4F28700323FDB /* SignUpViewController.swift */,
 				63A19A791AA636D700323FDB /* UserViewController.swift */,
 			);
 			name = ViewControllers;
@@ -271,7 +271,7 @@
 				63A19A6D1AA4E6FD00323FDB /* User.swift in Sources */,
 				63A19A4D1AA4E4A500323FDB /* iOS_Demo.xcdatamodeld in Sources */,
 				63A19A731AA4E8FB00323FDB /* LoginViewController.swift in Sources */,
-				63A19A781AA4F28700323FDB /* RegisterViewController.swift in Sources */,
+				63A19A781AA4F28700323FDB /* SignUpViewController.swift in Sources */,
 				63A19A4A1AA4E4A500323FDB /* AppDelegate.swift in Sources */,
 				63A19A761AA4EBA400323FDB /* LoginManager.swift in Sources */,
 			);

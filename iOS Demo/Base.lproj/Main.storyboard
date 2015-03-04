@@ -88,9 +88,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAI-LT-WvT">
-                                <rect key="frame" x="351" y="118" width="104" height="45"/>
+                                <rect key="frame" x="356" y="118" width="99" height="45"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <state key="normal" title="Register">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="1017" y="571.5"/>
         </scene>
-        <!--Register-->
+        <!--Sign Up-->
         <scene sceneID="oMx-kq-MQd">
             <objects>
-                <viewController id="gZ3-Lf-U9L" customClass="RegisterViewController" customModule="iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gZ3-Lf-U9L" customClass="SignUpViewController" customModule="iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S7E-gv-4pS"/>
                         <viewControllerLayoutGuide type="bottom" id="86z-Zt-0XZ"/>
@@ -345,7 +345,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Register" id="cZ9-0o-Cf9"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="cZ9-0o-Cf9"/>
                     <connections>
                         <outlet property="firstNameTextField" destination="1S3-sJ-Ntb" id="pqQ-kr-ijd"/>
                         <outlet property="lastNameTextField" destination="JeH-bU-PRu" id="F82-h6-dGc"/>

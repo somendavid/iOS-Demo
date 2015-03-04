@@ -1,6 +1,6 @@
 import UIKit
 
-class RegisterViewController: UIViewController, UITextFieldDelegate
+class SignUpViewController: UIViewController, UITextFieldDelegate
 {
     let loginManager = LoginManager()
     
@@ -30,11 +30,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate
 
     func checkValidation() -> Bool
     {
-        if (self.usernameTextField.text.isEmpty ||
-            self.firstNameTextField.text.isEmpty ||
-            self.usernameTextField.text.isEmpty ||
-            self.firstNameTextField.text.isEmpty ||
-            self.passwordTextField.text.isEmpty)
+        if (self.usernameTextField.text.isEmpty || self.firstNameTextField.text.isEmpty ||
+            self.lastNameTextField.text.isEmpty || self.passwordTextField.text.isEmpty)
         {
             self.showAlert("Please fill in all the fields")
             return false
@@ -57,6 +54,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate
     {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 

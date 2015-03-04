@@ -11,7 +11,7 @@ class LoginViewController: UIViewController
     
     @IBAction func loginButtonPressed(sender: UIButton)
     {
-        login()
+        self.login()
     }
 
     func login()
@@ -23,7 +23,7 @@ class LoginViewController: UIViewController
         }
         else
         {
-            showAlert()
+            self.showAlert()
         }
     }
     
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController
         switch textField
         {
             case self.usernameTextField: self.passwordTextField.becomeFirstResponder(); break
-            case self.passwordTextField: login(); break
+            case self.passwordTextField: self.login(); break
             default: break
         }
 

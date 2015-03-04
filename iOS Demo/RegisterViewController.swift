@@ -12,12 +12,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate
 
     @IBAction func registerButtonPressed(sender: UIButton)
     {
-        register()
+        self.register()
     }
 
     func register()
     {
-        if (!checkValidation())
+        if (!self.checkValidation())
         {
             return
         }
@@ -36,17 +36,17 @@ class RegisterViewController: UIViewController, UITextFieldDelegate
             self.firstNameTextField.text.isEmpty ||
             self.passwordTextField.text.isEmpty)
         {
-            showAlert("Please fill in all the fields")
+            self.showAlert("Please fill in all the fields")
             return false
         }
         else if (self.passwordTextField.text != self.repeatPasswordTextField.text)
         {
-            showAlert("Passwords are not the same")
+            self.showAlert("Passwords are not the same")
             return false
         }
         else if (self.loginManager.checkUsername(self.usernameTextField.text))
         {
-            showAlert("Username already exists")
+            self.showAlert("Username already exists")
             return false
         }
 
@@ -68,7 +68,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate
             case self.firstNameTextField: self.lastNameTextField.becomeFirstResponder(); break
             case self.lastNameTextField: self.passwordTextField.becomeFirstResponder(); break
             case self.passwordTextField: self.repeatPasswordTextField.becomeFirstResponder(); break
-            case self.repeatPasswordTextField: register(); break
+            case self.repeatPasswordTextField: self.register(); break
             default: break
         }
 

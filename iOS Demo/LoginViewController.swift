@@ -11,6 +11,11 @@ class LoginViewController: UIViewController
     
     @IBAction func loginButtonPressed(sender: UIButton)
     {
+        login()
+    }
+
+    func login()
+    {
         if let user = self.loginManager.loginUsername(self.usernameTextField.text, password: self.passwordTextField.text)
         {
             self.loginUser = user
@@ -36,5 +41,17 @@ class LoginViewController: UIViewController
         let alertController = UIAlertController(title: "Login Failed", message: nil, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        switch textField
+        {
+            case self.usernameTextField: self.passwordTextField.becomeFirstResponder(); break
+            case self.passwordTextField: login(); break
+            default: break
+        }
+
+        return true
     }
 }

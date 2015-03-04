@@ -1,6 +1,6 @@
 import UIKit
 
-class RegisterViewController: UIViewController
+class RegisterViewController: UIViewController, UITextFieldDelegate
 {
     let loginManager = LoginManager()
     
@@ -12,6 +12,11 @@ class RegisterViewController: UIViewController
 
     @IBAction func registerButtonPressed(sender: UIButton)
     {
+        register()
+    }
+
+    func register()
+    {
         if (!checkValidation())
         {
             return
@@ -19,7 +24,7 @@ class RegisterViewController: UIViewController
 
         self.loginManager.registerUsername(self.usernameTextField.text, password: self.passwordTextField.text,
                                            firstName: self.firstNameTextField.text, lastName: self.lastNameTextField.text)
-        
+
         self.navigationController?.popViewControllerAnimated(true)
     }
 
@@ -53,5 +58,20 @@ class RegisterViewController: UIViewController
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        switch textField
+        {
+            case self.usernameTextField: self.firstNameTextField.becomeFirstResponder(); break
+            case self.firstNameTextField: self.lastNameTextField.becomeFirstResponder(); break
+            case self.lastNameTextField: self.passwordTextField.becomeFirstResponder(); break
+            case self.passwordTextField: self.repeatPasswordTextField.becomeFirstResponder(); break
+            case self.repeatPasswordTextField: register(); break
+            default: break
+        }
+
+        return true
     }
 }

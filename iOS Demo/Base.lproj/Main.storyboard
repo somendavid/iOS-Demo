@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D87p" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1rm-4t-15p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1rm-4t-15p">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -152,6 +152,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgS-E0-328" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1017" y="571.5"/>
+        </scene>
+        <!--Lookup Table View Controller-->
+        <scene sceneID="U7A-D0-lRf">
+            <objects>
+                <tableViewController id="nBa-FW-SQe" customClass="LookupTableViewController" customModule="iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="49O-av-Uw1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="pbX-0x-xgV">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pbX-0x-xgV" id="JwI-I1-9Vu">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nBa-FW-SQe" id="ugo-jG-eiz"/>
+                            <outlet property="delegate" destination="nBa-FW-SQe" id="PSb-Pf-Cc8"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Dd-bB-a0i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2419" y="945"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="oMx-kq-MQd">
@@ -361,7 +387,7 @@
         <!--User View Controller-->
         <scene sceneID="tGl-bM-Abc">
             <objects>
-                <viewController id="5aO-RK-97K" customClass="UserViewController" customModule="iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5aO-RK-97K" customClass="UserViewController" customModule="iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GuB-8K-PWi"/>
                         <viewControllerLayoutGuide type="bottom" id="sby-4V-MNS"/>
@@ -392,11 +418,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="firstNameLabel" destination="ZKU-1n-CEB" id="cPF-VF-qm1"/>
+                        <segue destination="nBa-FW-SQe" kind="show" identifier="LookupTableViewController" id="6BS-BF-R52"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tL-I7-ZSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1731" y="913.5"/>
+            <point key="canvasLocation" x="1732" y="945"/>
         </scene>
     </scenes>
     <resources>

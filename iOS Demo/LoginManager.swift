@@ -48,4 +48,16 @@ class LoginManager
         
         self.managedObjectContext.save(nil)
     }
+    
+    func getAllUsers() -> [User]?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "User")
+
+        if let result = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
+        {
+            return result
+        }
+        
+        return nil
+    }
 }

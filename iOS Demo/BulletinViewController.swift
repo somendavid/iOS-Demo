@@ -10,7 +10,7 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
     var bulletins = [String]()
 
     var textField: UITextField?
-    var timer: NSTimer?
+    var initials: String?
 
     required init(coder aDecoder: NSCoder)
     {
@@ -29,7 +29,8 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "NotificationRecieved", object: nil)
 
         let notification = CKNotificationInfo()
-        notification.alertBody = "Bulletin Recieved!"
+        notification.alertBody = "New Bulletin Recieved!"
+        notification.soundName = UILocalNotificationDefaultSoundName
 
         let uuid = UIDevice.currentDevice().identifierForVendor.UUIDString + "create"
         let subscription = CKSubscription(recordType: "Reward", predicate: NSPredicate(value: true), subscriptionID: uuid, options: .FiresOnRecordCreation)
@@ -54,36 +55,49 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
 
             if status == .Granted
             {
-                self.container.discoverAllContactUserInfosWithCompletionHandler()
+                self.container.fetchUserRecordIDWithCompletionHandler()
                 {
-                    (userInfo: [AnyObject]!, error) in
+                    (recordId: CKRecordID!, error) in
 
-                    self.handleError(error)
-
-                    if (userInfo.isEmpty)
+                    self.container.discoverUserInfoWithUserRecordID(recordId)
                     {
-                        return
-                    }
-
-                    let me = userInfo.first as CKDiscoveredUserInfo
-
-                    self.publicDB.fetchRecordWithID(me.userRecordID)
-                    {
-                        (userRecord: CKRecord!, error) in
-
-                        userRecord.setObject(me.firstName, forKey: "firstName")
-                        userRecord.setObject(me.lastName, forKey: "lastName")
-
-                        self.publicDB.saveRecord(userRecord, nil)
-                    }
-
-                    dispatch_async(dispatch_get_main_queue())
-                    {
-                        self.title = me.firstName + " " + me.lastName
+                        (userInfo: CKDiscoveredUserInfo!, error) in
+                            
+                        self.handleError(error)
+                            
+                        self.publicDB.fetchRecordWithID(userInfo.userRecordID)
+                        {
+                            (userRecord: CKRecord!, error) in
+                            
+                            self.handleError(error)
+                            
+                            userRecord.setObject(userInfo.firstName, forKey: "firstName")
+                            userRecord.setObject(userInfo.lastName, forKey: "lastName")
+                                    
+                            self.publicDB.saveRecord(userRecord, nil)
+                            
+                            self.initials = self.getInitials(userRecord)
+                        }
+                            
+                        dispatch_async(dispatch_get_main_queue())
+                        {
+                            self.title = userInfo.firstName + " " + userInfo.lastName
+                        }
                     }
                 }
             }
         }
+    }
+    
+    func getInitials(userRecord: CKRecord) -> String
+    {
+        let firstName = userRecord.objectForKey("firstName") as String
+        let lastName = userRecord.objectForKey("lastName") as String
+        
+        let firstInitial = first(firstName)
+        let lastInitial = first(lastName)
+
+        return String(firstInitial!) + String(lastInitial!)
     }
 
     override func viewDidLoad()
@@ -114,7 +128,24 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
         operation.recordFetchedBlock = {
             (record: CKRecord!) in
 
-            self.bulletins.append(record.objectForKey("Title") as String)
+            let title = record.objectForKey("Title") as String
+            
+            self.publicDB.fetchRecordWithID(record.creatorUserRecordID)
+            {
+                (userRecord: CKRecord!, error) in
+                    
+                self.handleError(error)
+             
+                
+                let fullTitle = self.getInitials(userRecord) + " - " + title
+                
+                self.bulletins.append(fullTitle)
+                
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    self.tableView.reloadData()
+                }
+            }
         }
 
         operation.queryCompletionBlock = {
@@ -124,32 +155,11 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
 
             dispatch_async(dispatch_get_main_queue())
             {
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
+                self.refreshControl!.endRefreshing()
             }
         }
 
         publicDB.addOperation(operation)
-
-        /*
-        publicDB.performQuery(query, inZoneWithID: nil)
-        {
-            results, error in
-
-            self.handleError(error)
-
-            for result in results as [CKRecord]
-            {
-                self.bulletins.append(result.objectForKey("Title") as String)
-            }
-
-            dispatch_async(dispatch_get_main_queue())
-            {
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-            }
-        }
-        */
     }
 
     @IBAction func addButtonPressed(sender: AnyObject)
@@ -171,7 +181,9 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
 
                     self.handleError(error)
 
-                    self.bulletins.insert(title, atIndex: 0)
+                    let fullTitle = self.initials! + " - " + title
+
+                    self.bulletins.insert(fullTitle, atIndex: 0)
 
                     dispatch_async(dispatch_get_main_queue())
                     {

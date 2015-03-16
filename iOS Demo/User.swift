@@ -2,12 +2,18 @@ import Foundation
 import CoreData
 
 @objc (User)
-class User: NSManagedObject
+public class User: NSManagedObject
 {
-    @NSManaged var username: String
-    @NSManaged var password: String
-    @NSManaged var firstname: String
-    @NSManaged var lastname: String
-    @NSManaged var age: NSNumber
+    @NSManaged public var username: String
+    @NSManaged public var password: String
+    @NSManaged public var firstname: String
+    @NSManaged public var lastname: String
 
+    public var fullName: String
+    {
+        get
+        {
+            return firstname + " " + lastname
+        }
+    }
 }

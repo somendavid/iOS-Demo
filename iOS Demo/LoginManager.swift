@@ -1,17 +1,17 @@
 import UIKit
 import CoreData
 
-class LoginManager
+public class LoginManager
 {
+    let dataManager = DataManager()
     let managedObjectContext: NSManagedObjectContext
     
-    init()
+    public init()
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        self.managedObjectContext = appDelegate.managedObjectContext!
+        self.managedObjectContext = dataManager.managedObjectContext!
     }
 
-    func loginUsername(username: String, password: String) -> User?
+    public func loginUsername(username: String, password: String) -> User?
     {
         let fetchRequest = NSFetchRequest(entityName: "User")
         fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username, password)
@@ -24,7 +24,7 @@ class LoginManager
         return nil;
     }
 
-    func checkUsername(username: String) -> Bool
+    public func checkUsername(username: String) -> Bool
     {
         let fetchRequest = NSFetchRequest(entityName: "User")
         fetchRequest.predicate = NSPredicate(format: "username == %@", username)
@@ -37,7 +37,7 @@ class LoginManager
         return false
     }
     
-    func registerUsername(username: String, password: String, firstName: String, lastName: String)
+    public func registerUsername(username: String, password: String, firstName: String, lastName: String)
     {
         let newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.managedObjectContext) as User
         
@@ -49,7 +49,7 @@ class LoginManager
         self.managedObjectContext.save(nil)
     }
     
-    func getAllUsers() -> [User]?
+    public func getAllUsers() -> [User]?
     {
         let fetchRequest = NSFetchRequest(entityName: "User")
 

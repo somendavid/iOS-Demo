@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DemoKit
 
 class LookupTableViewController: UITableViewController {
 

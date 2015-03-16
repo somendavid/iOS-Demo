@@ -1,6 +1,7 @@
 import UIKit
+import DemoKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate
+class SignUpViewController: ScrollViewControllerBase
 {
     let loginManager = LoginManager()
     

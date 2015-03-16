@@ -1,4 +1,5 @@
 import UIKit
+import DemoKit
 
 class UserViewController: UIViewController
 {
@@ -11,7 +12,7 @@ class UserViewController: UIViewController
         super.viewDidLoad()
 
         self.title = self.user.username
-        self.firstNameLabel.text = self.user.firstname + " " + self.user.lastname
+        self.firstNameLabel.text = self.user.fullName
         
         if(user.username == "davidsomen")
         {

@@ -30,7 +30,7 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
 
         let notification = CKNotificationInfo()
         notification.alertBody = "New Bulletin Recieved!"
-        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.soundName = "dingding.aif"
 
         let uuid = UIDevice.currentDevice().identifierForVendor.UUIDString + "create"
         let subscription = CKSubscription(recordType: "Reward", predicate: NSPredicate(value: true), subscriptionID: uuid, options: .FiresOnRecordCreation)
@@ -136,7 +136,6 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
                     
                 self.handleError(error)
              
-                
                 let fullTitle = self.getInitials(userRecord) + " - " + title
                 
                 self.bulletins.append(fullTitle)

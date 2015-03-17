@@ -23,6 +23,7 @@
 		6376E47F1AB5BF3100B58B5D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6376E47E1AB5BF3100B58B5D /* MainInterface.storyboard */; };
 		6376E4821AB5BF3100B58B5D /* DemoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6376E4751AB5BF3100B58B5D /* DemoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6376E4871AB5C01E00B58B5D /* DemoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6376E44C1AB5B6DE00B58B5D /* DemoKit.framework */; };
+		637E88B41AB7C11100003C51 /* dingding.aif in Resources */ = {isa = PBXBuildFile; fileRef = 637E88B31AB7C11100003C51 /* dingding.aif */; };
 		63A19A4A1AA4E4A500323FDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A19A491AA4E4A500323FDB /* AppDelegate.swift */; };
 		63A19A521AA4E4A500323FDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A19A501AA4E4A500323FDB /* Main.storyboard */; };
 		63A19A541AA4E4A500323FDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63A19A531AA4E4A500323FDB /* Images.xcassets */; };
@@ -118,6 +119,7 @@
 		6376E4881AB5C1C700B58B5D /* iOS Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "iOS Demo.entitlements"; sourceTree = "<group>"; };
 		6376E4891AB5C1EA00B58B5D /* DemoToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DemoToday.entitlements; sourceTree = "<group>"; };
 		6376E48A1AB5F9A900B58B5D /* BulletinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
+		637E88B31AB7C11100003C51 /* dingding.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = dingding.aif; sourceTree = "<group>"; };
 		63A19A441AA4E4A500323FDB /* iOS Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A19A481AA4E4A500323FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63A19A491AA4E4A500323FDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		63A19A701AA4E76400323FDB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				637E88B31AB7C11100003C51 /* dingding.aif */,
 				63A19A531AA4E4A500323FDB /* Images.xcassets */,
 			);
 			name = Resources;
@@ -556,6 +559,7 @@
 			files = (
 				63A19A521AA4E4A500323FDB /* Main.storyboard in Resources */,
 				63A19A571AA4E4A500323FDB /* LaunchScreen.xib in Resources */,
+				637E88B41AB7C11100003C51 /* dingding.aif in Resources */,
 				63A19A541AA4E4A500323FDB /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

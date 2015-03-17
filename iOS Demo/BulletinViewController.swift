@@ -1,5 +1,6 @@
 import UIKit
 import CloudKit
+import DemoKit
 
 class BulletinViewController: UITableViewController, UITextFieldDelegate
 {
@@ -11,15 +12,20 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
 
     var textField: UITextField?
     var initials: String?
+    
+    var gameManager : GameManager!
 
     required init(coder aDecoder: NSCoder)
     {
         container = CKContainer.defaultContainer()
         publicDB = container.publicCloudDatabase
         privateDB = container.privateCloudDatabase
-
+        
         super.init(coder: aDecoder)
 
+        gameManager = GameManager(viewController: self)
+        gameManager.authenticateLocalPlayer()
+        
         subscribe()
         requestAccess()
     }
@@ -188,6 +194,8 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
                     dispatch_async(dispatch_get_main_queue())
                     {
                         self.tableView.reloadData()
+                        
+                        self.gameManager.reportAchievment()
                     }
                 }
             }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3EC1E15364A3713EE81A23E4 /* LookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC1EB6D71D4462D6DC06332 /* LookupTableViewController.swift */; };
+		634B4A2A1AB835410078CDAE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634B4A291AB835410078CDAE /* GameKit.framework */; };
+		634B4A2C1AB835A80078CDAE /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B4A2B1AB835A80078CDAE /* GameManager.swift */; };
 		6376E4151AB3A2FE00B58B5D /* ScrollViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376E4141AB3A2FE00B58B5D /* ScrollViewControllerBase.swift */; };
 		6376E4511AB5B6DE00B58B5D /* DemoKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6376E4501AB5B6DE00B58B5D /* DemoKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6376E4571AB5B6DE00B58B5D /* DemoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6376E44C1AB5B6DE00B58B5D /* DemoKit.framework */; };
@@ -103,6 +105,8 @@
 
 /* Begin PBXFileReference section */
 		3EC1EB6D71D4462D6DC06332 /* LookupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupTableViewController.swift; sourceTree = "<group>"; };
+		634B4A291AB835410078CDAE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		634B4A2B1AB835A80078CDAE /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		6376E4141AB3A2FE00B58B5D /* ScrollViewControllerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewControllerBase.swift; sourceTree = "<group>"; };
 		6376E44C1AB5B6DE00B58B5D /* DemoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DemoKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6376E44F1AB5B6DE00B58B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				63BC00031AB6169000196C80 /* iAd.framework in Frameworks */,
 				6376E4631AB5B6DE00B58B5D /* DemoKit.framework in Frameworks */,
 				63DF67861AB5FB8D003A892A /* CloudKit.framework in Frameworks */,
+				634B4A2A1AB835410078CDAE /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +199,7 @@
 				6376E4501AB5B6DE00B58B5D /* DemoKit.h */,
 				6376E44E1AB5B6DE00B58B5D /* Supporting Files */,
 				6376E46F1AB5B80D00B58B5D /* DataManager.swift */,
+				634B4A2B1AB835A80078CDAE /* GameManager.swift */,
 			);
 			path = DemoKit;
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 		6376E4761AB5BF3100B58B5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				634B4A291AB835410078CDAE /* GameKit.framework */,
 				63BC00021AB6169000196C80 /* iAd.framework */,
 				63DF67851AB5FB8D003A892A /* CloudKit.framework */,
 				6376E4771AB5BF3100B58B5D /* NotificationCenter.framework */,
@@ -497,6 +504,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -582,6 +592,7 @@
 				6376E4701AB5B80D00B58B5D /* DataManager.swift in Sources */,
 				6376E46E1AB5B75500B58B5D /* iOS_Demo.xcdatamodeld in Sources */,
 				6376E46D1AB5B74F00B58B5D /* LoginManager.swift in Sources */,
+				634B4A2C1AB835A80078CDAE /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

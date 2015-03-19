@@ -9,8 +9,14 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
     let privateDB: CKDatabase
 
     var bulletins = [String]()
+    let kBulletinLimit = 10
+    let kBulletinTitleCharLimit = 30
 
-    var textField: UITextField?
+    var titleTextField: UITextField?
+    var messageTextField: UITextField?
+    
+    var sendAction: UIAlertAction?
+    
     var initials: String?
     
     var gameManager : GameManager!
@@ -39,7 +45,7 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
         notification.soundName = "dingding.aif"
 
         let uuid = UIDevice.currentDevice().identifierForVendor.UUIDString + "create"
-        let subscription = CKSubscription(recordType: "Reward", predicate: NSPredicate(value: true), subscriptionID: uuid, options: .FiresOnRecordCreation)
+        let subscription = CKSubscription(recordType: "Bulletin", predicate: NSPredicate(value: true), subscriptionID: uuid, options: .FiresOnRecordCreation)
 
         subscription.notificationInfo = notification
 
@@ -124,8 +130,8 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
     {
         bulletins.removeAll(keepCapacity: false)
 
-        let query = CKQuery(recordType: "Reward", predicate: NSPredicate(value: true))
-        let sortDescriptor = NSSortDescriptor(key: "creationData", ascending: false)
+        let query = CKQuery(recordType: "Bulletin", predicate: NSPredicate(value: true))
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         query.sortDescriptors = [sortDescriptor]
 
         let operation = CKQueryOperation(query: query)
@@ -134,7 +140,7 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
         operation.recordFetchedBlock = {
             (record: CKRecord!) in
 
-            let title = record.objectForKey("Title") as String
+            let title = record.objectForKey("title") as String
             
             self.publicDB.fetchRecordWithID(record.creatorUserRecordID)
             {
@@ -170,23 +176,27 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
     @IBAction func addButtonPressed(sender: AnyObject)
     {
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        let doneAction = UIAlertAction(title: "Done", style: .Default)
+        
+        sendAction = UIAlertAction(title: "Send", style: .Default)
         {
             action in
 
-            if let title = self.textField?.text
+            let title = self.titleTextField?.text
+            let message = self.messageTextField?.text
+            
+            let record = CKRecord(recordType: "Bulletin")
+            record.setObject(title, forKey: "title")
+            record.setObject(message, forKey: "message")
+
+            self.publicDB.saveRecord(record)
             {
-                let record = CKRecord(recordType: "Reward")
-                record.setObject(title, forKey: "Title")
-                record.setObject(NSDate(), forKey: "creationData")
+                record, error in
 
-                self.publicDB.saveRecord(record)
-                {
-                    record, error in
+                self.handleError(error)
 
-                    self.handleError(error)
+                let fullTitle = self.initials! + " - " + title!
 
-                    let fullTitle = self.initials! + " - " + title
+                self.bulletins.insert(fullTitle, atIndex: 0)
 
                     self.bulletins.insert(fullTitle, atIndex: 0)
 
@@ -199,18 +209,32 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
                 }
             }
         }
+        sendAction?.enabled = false
 
-        let alert = UIAlertController(title: "Add Bulletin", message: nil, preferredStyle: .Alert)
-        alert.addAction(doneAction)
+        let alert = UIAlertController(title: nil, message: "Add Bulletin", preferredStyle: .Alert)
         alert.addAction(cancelAction)
+        alert.addAction(sendAction!)
+        
         alert.addTextFieldWithConfigurationHandler()
         {
             (textField: UITextField!) in
 
+            textField.placeholder = "Title"
             textField.delegate = self
             textField.autocapitalizationType = .Words
 
-            self.textField = textField
+            self.titleTextField = textField
+        }
+        
+        alert.addTextFieldWithConfigurationHandler()
+        {
+            (textField: UITextField!) in
+                
+            textField.placeholder = "Message"
+            textField.delegate = self
+            textField.autocapitalizationType = .Words
+                
+            self.messageTextField = textField
         }
 
         presentViewController(alert, animated: true, completion: nil)
@@ -220,7 +244,7 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
     {
         if let error = error
         {
-            let alertController = UIAlertController(title: nil, message: "CKErrorDomain \(error.code)", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "CKErrorDomain \(error.code)", message: "Please inform yours truly of the conditions that led to this unfortunate oopsie daisy.", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
 
             dispatch_async(dispatch_get_main_queue())
@@ -245,7 +269,11 @@ class BulletinViewController: UITableViewController, UITextFieldDelegate
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
-        return countElements(textField.text) < 30 || string == ""
+        let count = countElements(textField.text)
+    
+        //sendAction?.enabled = count != 0
+        
+        return count < kBulletinTitleCharLimit || string == ""
     }
 }
 

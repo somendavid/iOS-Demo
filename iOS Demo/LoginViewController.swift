@@ -1,13 +1,14 @@
 import UIKit
 import DemoKit
 
+private let userSegueIdentifier = "UserViewController"
+
 class LoginViewController: UIViewController
 {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let loginManager = LoginManager()
-    let userSegueIdentifier = "UserViewController"
+    let loginManager = LoginManager.sharedInstance
     var loginUser: User?
     
     @IBAction func loginButtonPressed(sender: UIButton)
@@ -17,7 +18,7 @@ class LoginViewController: UIViewController
 
     func login()
     {
-        if let user = self.loginManager.loginUsername(self.usernameTextField.text, password: self.passwordTextField.text)
+        if let user = loginManager.loginUsername(self.usernameTextField.text, password: self.passwordTextField.text)
         {
             self.loginUser = user
             self.performSegueWithIdentifier(userSegueIdentifier, sender: self)

@@ -14,7 +14,6 @@ import CloudKit
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
-    let manager = DataManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject:AnyObject]?) -> Bool
     {
@@ -32,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     func applicationWillTerminate(application: UIApplication)
     {
-        manager.saveContext()
+        DataManager.sharedInstance.saveContext()
     }
 }
 

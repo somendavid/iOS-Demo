@@ -11,7 +11,7 @@ import DemoKit
 
 class LookupTableViewController: UITableViewController {
 
-    let loginManager = LoginManager()
+    let loginManager = LoginManager.sharedInstance
     var users : Array<User> = []
     
     override func viewDidLoad() {

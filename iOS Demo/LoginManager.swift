@@ -3,20 +3,24 @@ import CoreData
 
 public class LoginManager
 {
-    let dataManager = DataManager()
-    let managedObjectContext: NSManagedObjectContext
-    
-    public init()
+    public class var sharedInstance: LoginManager
     {
-        self.managedObjectContext = dataManager.managedObjectContext!
+        struct Static
+        {
+            static let instance: LoginManager = LoginManager()
+        }
+
+        return Static.instance
     }
+
+    let managedObjectContext = DataManager.sharedInstance.managedObjectContext!
 
     public func loginUsername(username: String, password: String) -> User?
     {
         let fetchRequest = NSFetchRequest(entityName: "User")
         fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username, password)
         
-        if let result = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
+        if let result = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
         {
             return result.first
         }
@@ -29,7 +33,7 @@ public class LoginManager
         let fetchRequest = NSFetchRequest(entityName: "User")
         fetchRequest.predicate = NSPredicate(format: "username == %@", username)
 
-        if let result = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
+        if let result = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
         {
             return !result.isEmpty
         }
@@ -39,21 +43,21 @@ public class LoginManager
     
     public func registerUsername(username: String, password: String, firstName: String, lastName: String)
     {
-        let newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.managedObjectContext) as User
+        let newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: managedObjectContext) as User
         
         newUser.username = username
         newUser.password = password
         newUser.firstname = firstName
         newUser.lastname = lastName
         
-        self.managedObjectContext.save(nil)
+        managedObjectContext.save(nil)
     }
     
     public func getAllUsers() -> [User]?
     {
         let fetchRequest = NSFetchRequest(entityName: "User")
 
-        if let result = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
+        if let result = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [User]
         {
             return result
         }

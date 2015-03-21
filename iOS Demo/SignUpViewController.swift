@@ -3,7 +3,7 @@ import DemoKit
 
 class SignUpViewController: ScrollViewControllerBase
 {
-    let loginManager = LoginManager()
+    let loginManager = LoginManager.sharedInstance
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -23,28 +23,28 @@ class SignUpViewController: ScrollViewControllerBase
             return
         }
 
-        self.loginManager.registerUsername(self.usernameTextField.text, password: self.passwordTextField.text,
-                                           firstName: self.firstNameTextField.text, lastName: self.lastNameTextField.text)
+        loginManager.registerUsername(usernameTextField.text, password: passwordTextField.text,
+                                           firstName: firstNameTextField.text, lastName: lastNameTextField.text)
 
         self.navigationController?.popViewControllerAnimated(true)
     }
 
     func checkValidation() -> Bool
     {
-        if (self.usernameTextField.text.isEmpty || self.firstNameTextField.text.isEmpty ||
-            self.lastNameTextField.text.isEmpty || self.passwordTextField.text.isEmpty)
+        if (usernameTextField.text.isEmpty || firstNameTextField.text.isEmpty ||
+            lastNameTextField.text.isEmpty || passwordTextField.text.isEmpty)
         {
-            self.showAlert("Please fill in all the fields")
+            showAlert("Please fill in all the fields")
             return false
         }
-        else if (self.passwordTextField.text != self.repeatPasswordTextField.text)
+        else if (passwordTextField.text != repeatPasswordTextField.text)
         {
-            self.showAlert("Passwords are not the same")
+            showAlert("Passwords are not the same")
             return false
         }
-        else if (self.loginManager.checkUsername(self.usernameTextField.text))
+        else if (loginManager.checkUsername(usernameTextField.text))
         {
-            self.showAlert("Username already exists")
+            showAlert("Username already exists")
             return false
         }
 
@@ -63,11 +63,11 @@ class SignUpViewController: ScrollViewControllerBase
     {
         switch textField
         {
-            case self.usernameTextField: self.firstNameTextField.becomeFirstResponder(); break
-            case self.firstNameTextField: self.lastNameTextField.becomeFirstResponder(); break
-            case self.lastNameTextField: self.passwordTextField.becomeFirstResponder(); break
-            case self.passwordTextField: self.repeatPasswordTextField.becomeFirstResponder(); break
-            case self.repeatPasswordTextField: self.register(); break
+            case usernameTextField: firstNameTextField.becomeFirstResponder(); break
+            case firstNameTextField: lastNameTextField.becomeFirstResponder(); break
+            case lastNameTextField: passwordTextField.becomeFirstResponder(); break
+            case passwordTextField: repeatPasswordTextField.becomeFirstResponder(); break
+            case repeatPasswordTextField: register(); break
             default: break
         }
 

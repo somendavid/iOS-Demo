@@ -1,23 +1,19 @@
-//
-//  GameManager.swift
-//  iOS Demo
-//
-//  Created by David Somen on 17/03/2015.
-//  Copyright (c) 2015 David Somen. All rights reserved.
-//
-
 import GameKit
 
-public class GameManager {
-    
-    public var localPlayer : GKLocalPlayer?
-    
-    private var viewController: UIViewController!
-    
-    public init(viewController: UIViewController!)
+public class GameManager
+{
+    public class var sharedInstance: GameManager
     {
-        self.viewController = viewController
+        struct Static
+        {
+            static let instance: GameManager = GameManager()
+        }
+
+        return Static.instance
     }
+    
+    public var localPlayer: GKLocalPlayer?
+    public var viewController: UIViewController?
     
     public func authenticateLocalPlayer()
     {
@@ -25,11 +21,11 @@ public class GameManager {
         localPlayer.authenticateHandler = {
             (viewController: UIViewController!, error: NSError!) in
             
-            if(viewController != nil)
+            if (viewController != nil)
             {
-                self.viewController.presentViewController(viewController, animated: true, completion: nil)
+                self.viewController?.presentViewController(viewController, animated: true, completion: nil)
             }
-            else if(localPlayer.authenticated)
+            else if (localPlayer.authenticated)
             {
                 self.localPlayer = localPlayer
             }
@@ -38,15 +34,15 @@ public class GameManager {
     
     public func reportAchievment()
     {
-        GKAchievement.resetAchievementsWithCompletionHandler()
-        {
-            error in
-            
-            let achievment = GKAchievement(identifier: "ACH1")
-            achievment.percentComplete = 100
-            achievment.showsCompletionBanner = true
-            
-            GKAchievement.reportAchievements([achievment], withCompletionHandler: nil)
-        }
+        //GKAchievement.resetAchievementsWithCompletionHandler()
+        //{
+        //    error in
+
+        let achievment = GKAchievement(identifier: "ACH1")
+        achievment.percentComplete = 100
+        achievment.showsCompletionBanner = true
+
+        //    GKAchievement.reportAchievements([achievment], withCompletionHandler: nil)
+        //}
     }
 }

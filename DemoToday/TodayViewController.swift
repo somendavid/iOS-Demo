@@ -10,23 +10,24 @@ import UIKit
 import NotificationCenter
 import DemoKit
 
+private let kCellHeight = 44
+
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet weak var tableView: UITableView!
 
-    let loginManager = LoginManager()
     var users = [User]()
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        users = loginManager.getAllUsers()!
+        users = LoginManager.sharedInstance.getAllUsers()!
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        preferredContentSize = CGSize(width: 0, height: 44 * users.count)
+        preferredContentSize = CGSize(width: 0, height: kCellHeight * users.count)
 
         return users.count
     }

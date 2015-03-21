@@ -1,21 +1,23 @@
-//
-//  DataManager.swift
-//  iOS Demo
-//
-//  Created by David Somen on 15/03/2015.
-//  Copyright (c) 2015 David Somen. All rights reserved.
-//
-
 import CoreData
 
 public class DataManager: NSObject
 {
+    public class var sharedInstance: DataManager
+    {
+        struct Static
+        {
+            static let instance: DataManager = DataManager()
+        }
+
+        return Static.instance
+    }
+
     lazy var applicationDocumentsDirectory: NSURL? = {
         return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.david-john-somen.ios-demo") ?? nil
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
-        let bundle = NSBundle(forClass:DataManager.self)
+        let bundle = NSBundle(forClass: DataManager.self)
         let modelURL = bundle.URLForResource("iOS_Demo", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
